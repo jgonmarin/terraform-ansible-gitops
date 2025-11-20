@@ -62,9 +62,10 @@ jobs:
       - name: Validate Ansible Syntax
         run: ansible-playbook ansible/main_playbook.yml --syntax-check
 
-      - name:
+      - name: Execute ansible
         run: |
-            cd ansible
-            ansible-playbook main_playbook.yml -user ubuntu -e "alb_dns=$ALB_DNS"
-        env:
-          ALB_DNS: ${{ env.ALB_DNS }}
+          cd ansible
+          ansible-playbook -i inventory/aws_ec2.yml main_playbook.yml \
+            --user ubuntu \
+            --private-key ~/.ssh/id_rsa \
+            --extra-vars "alb_dns=$ALB_DNS"
