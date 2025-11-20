@@ -10,7 +10,6 @@ terraform {
     key            = "gitops/tf-state-final.tfstate"
     region         = "us-east-2"
     encrypt        = true
-    dynamodb_table = "terraform-locks"
   }
 }
 
@@ -18,3 +17,4 @@ provider "aws" {
   region = var.aws_region
 
 }
+
