@@ -8,7 +8,7 @@ env:
 jobs:
   deploy_infra:
     
-    runs-on: ubuntu_latest
+    runs-on: ubuntu-latest
     
     steps:
       - name: Code Checkout
