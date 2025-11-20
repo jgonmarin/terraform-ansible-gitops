@@ -1,35 +1,19 @@
 ---
 # tasks file for roles/gitops
-- name: Tarea 1. Actualizar el caché de DNF y asegurar dependencias
-  ansible.builtin.dnf:
+- name: Install apache2
+  ansible.builtin.apt:
     name: 
-      - dnf-utils
-      - epel-release
-      - nginx
-      - httpd
+      - apache2
+      - php
     state: latest
 
-# --- Configuración y despliegue (EJEMPLO) ---
 
-- name: Tarea 4. Configurar Apache para usar un puerto alternativo ({{ apache_port }})
-  ansible.builtin.lineinfile:
-    path: /etc/httpd/conf/httpd.conf
-    regexp: '^Listen 80$'
-    line: 'Listen {{ apache_port }}'
-    state: present
-  notify: Restart Apache
 
-- name: Tarea 5. Asegurar que Nginx y Apache se ejecuten automáticamente
+- name: Ensure Apache is started
   ansible.builtin.service:
-    name: "{{ item }}"
+    name: 
+      - apache2
+      - php
     state: started
     enabled: yes
-  loop:
-    - nginx
-    - httpd
         
-- name: Desplegar un index.html simple para Nginx (ejemplo de prueba)
-  ansible.builtin.copy:
-    content: "<h1>Servicio Web OK - Servido por Nginx</h1>"
-    dest: /usr/share/nginx/html/index.html
-    mode: '0644'
