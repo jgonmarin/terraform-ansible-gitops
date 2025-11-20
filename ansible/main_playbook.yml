@@ -1,5 +1,5 @@
 ---
 - name: Setup ec2 machines
-  hosts: tag_gitops
+  hosts: role_gitops
   roles:
     - gitops
