@@ -179,6 +179,12 @@ resource "aws_security_group" "web_sg" {
         protocol = "tcp"
         security_groups = [aws_security_group.alb_sg.id]
     }
+    egress {
+        from_port   = 0
+        to_port     = 0
+        protocol    = "-1"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
     tags = {
         Name = "Web-SG-JG"
     }
@@ -302,5 +308,6 @@ output "rds_endpoint" {
 output "asg_name" {
   value       = aws_autoscaling_group.asg.name
 }
+
 
 
