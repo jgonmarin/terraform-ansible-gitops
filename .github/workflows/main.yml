@@ -1,0 +1,70 @@
+name: Práctica Final GitOps
+
+on:
+  workflow_dispatch:
+env:
+  AWS_REGION: ${{ secrets.AWS_REGION }}
+  
+jobs:
+  deploy_infra:
+    
+    runs_on: ubuntu_latest
+    
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.5.0"
+      - name: Initialise Terraform
+        run: |
+          cd terraform
+          terraform init
+      - name: Terraform Plan
+        run: |
+          cd terraform
+          terraform validate
+          terraform plan -var="aws_region=${{ secrets.AWS_REGION }}" -out=tfplan
+      
+      - name: Terraform Apply
+        run: |
+          cd terraform
+          terraform apply -var="aws_region=${{ secrets.AWS_REGION }}" --auto-approve tfplan
+    
+      - name: Capture ALB DNS
+        run: |
+          cd terraform
+          alb_dns=$(terraform output -raw alb_dns_name)
+          echo "ALB_DNS=$alb_dns" >> $GITHUB_ENV
+          ASG_NAME=$(terraform output -raw asg_name)
+          echo "ASG_NAME=$ASG_NAME" >> $GITHUB_ENV
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+        
+      - name: Install Ansible and AWS dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install -y ansible python3-pip
+          pip3 install boto3 botocore
+          
+      - name: Validate Ansible Syntax
+        run: ansible-playbook ansible/main_playbook.yml --syntax-check
+
+      - name:
+        run: |
+            cd ansible
+            ansible-playbook main_playbook.yml -user ubuntu -e "alb_dns=$ALB_DNS"
+        env:
+          ALB_DNS: ${{ env.ALB_DNS }}
