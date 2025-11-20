@@ -33,12 +33,12 @@ jobs:
         run: |
           cd terraform
           terraform validate
-          terraform plan -var="aws_region=${{ secrets.AWS_REGION }}" -out=tfplan
+          terraform plan -out=tfplan
       
       - name: Terraform Apply
         run: |
           cd terraform
-          terraform apply -var="aws_region=${{ secrets.AWS_REGION }}" --auto-approve tfplan
+          terraform apply --auto-approve tfplan
     
       - name: Capture ALB DNS
         run: |
