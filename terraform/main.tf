@@ -278,7 +278,8 @@ resource "aws_db_subnet_group" "rds_group" {
 }
 
 resource "aws_db_instance" "db" {
-    allocated_storage      = 20
+    allocated_storage      = 10
+    identifier = "jg-db-gitops"
     db_name                = "jgdb"
     engine                 = "postgres"
     engine_version         = "16.11"
@@ -301,3 +302,4 @@ output "rds_endpoint" {
 output "asg_name" {
   value       = aws_autoscaling_group.asg.name
 }
+
