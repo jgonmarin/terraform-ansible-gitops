@@ -1,0 +1,21 @@
+[Sat Nov 15 16:15:04.875895 2025] [mpm_event:notice] [pid 2342:tid 128098471237504] AH00489: Apache/2.4.52 (Ubuntu) configured -- resuming normal operations
+[Sat Nov 15 16:15:04.876044 2025] [core:notice] [pid 2342:tid 128098471237504] AH00094: Command line: '/usr/sbin/apache2'
+[Sat Nov 15 16:15:25.298528 2025] [mpm_event:notice] [pid 2342:tid 128098471237504] AH00492: caught SIGWINCH, shutting down gracefully
+[Sat Nov 15 16:15:25.356303 2025] [mpm_prefork:notice] [pid 9075] AH00163: Apache/2.4.52 (Ubuntu) configured -- resuming normal operations
+[Sat Nov 15 16:15:25.356436 2025] [core:notice] [pid 9075] AH00094: Command line: '/usr/sbin/apache2'
+[Sat Nov 15 16:15:25.517398 2025] [mpm_prefork:notice] [pid 9075] AH00170: caught SIGWINCH, shutting down gracefully
+[Sat Nov 15 16:15:25.602867 2025] [mpm_prefork:notice] [pid 9115] AH00163: Apache/2.4.52 (Ubuntu) configured -- resuming normal operations
+[Sat Nov 15 16:15:25.602902 2025] [core:notice] [pid 9115] AH00094: Command line: '/usr/sbin/apache2'
+[Sat Nov 15 16:15:25.874477 2025] [mpm_prefork:notice] [pid 9115] AH00170: caught SIGWINCH, shutting down gracefully
+[Sat Nov 15 16:15:25.954538 2025] [mpm_prefork:notice] [pid 9148] AH00163: Apache/2.4.52 (Ubuntu) configured -- resuming normal operations
+[Sat Nov 15 16:15:25.954585 2025] [core:notice] [pid 9148] AH00094: Command line: '/usr/sbin/apache2'
+[Sat Nov 15 16:15:36.308511 2025] [mpm_prefork:notice] [pid 9148] AH00170: caught SIGWINCH, shutting down gracefully
+[Sat Nov 15 16:15:36.401876 2025] [mpm_prefork:notice] [pid 10310] AH00163: Apache/2.4.52 (Ubuntu) configured -- resuming normal operations
+[Sat Nov 15 16:15:36.401921 2025] [core:notice] [pid 10310] AH00094: Command line: '/usr/sbin/apache2'
+[Sat Nov 15 16:16:11.918135 2025] [php:error] [pid 10313] [client 3.139.69.125:37252] PHP Fatal error:  Uncaught Error: Call to undefined function wp() in /var/www/html/wp-blog-header.php:16\nStack trace:\n#0 /var/www/html/index.php(17): require()\n#1 {main}\n  thrown in /var/www/html/wp-blog-header.php on line 16
+[Sat Nov 15 16:16:19.980910 2025] [php:error] [pid 10316] [client 3.139.69.125:52816] PHP Fatal error:  Uncaught Error: Call to undefined function wp() in /var/www/html/wp-blog-header.php:16\nStack trace:\n#0 /var/www/html/index.php(17): require()\n#1 {main}\n  thrown in /var/www/html/wp-blog-header.php on line 16
+[Sat Nov 15 16:16:28.036905 2025] [php:error] [pid 10315] [client 3.139.69.125:46078] PHP Fatal error:  Uncaught Error: Call to undefined function wp() in /var/www/html/wp-blog-header.php:16\nStack trace:\n#0 /var/www/html/index.php(17): require()\n#1 {main}\n  thrown in /var/www/html/wp-blog-header.php on line 16
+[Sat Nov 15 16:16:35.606771 2025] [php:error] [pid 10314] [client 3.139.69.125:43844] PHP Fatal error:  Uncaught Error: Call to undefined function wp() in /var/www/html/wp-blog-header.php:16\nStack trace:\n#0 /var/www/html/index.php(17): require()\n#1 {main}\n  thrown in /var/www/html/wp-blog-header.php on line 16
+[Sat Nov 15 16:16:43.233849 2025] [php:error] [pid 10317] [client 3.139.69.125:43858] PHP Fatal error:  Uncaught Error: Call to undefined function wp() in /var/www/html/wp-blog-header.php:16\nStack trace:\n#0 /var/www/html/index.php(17): require()\n#1 {main}\n  thrown in /var/www/html/wp-blog-header.php on line 16
+[Sat Nov 15 16:16:50.722043 2025] [php:error] [pid 10313] [client 3.139.69.125:45292] PHP Fatal error:  Uncaught Error: Call to undefined function wp() in /var/www/html/wp-blog-header.php:16\nStack trace:\n#0 /var/www/html/index.php(17): require()\n#1 {main}\n  thrown in /var/www/html/wp-blog-header.php on line 16
+[Sat Nov 15 16:17:49.084552 2025] [php:error] [pid 10315] [client 47.62.231.77:63086] PHP Fatal error:  Uncaught Error: Call to undefined function wp() in /var/www/html/wp-blog-header.php:16\nStack trace:\n#0 /var/www/html/index.php(17): require()\n#1 {main}\n  thrown in /var/www/html/wp-blog-header.php on line 16
