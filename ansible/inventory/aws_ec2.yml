@@ -5,8 +5,7 @@ filters:
   instance-state-name: running
 keyed_groups:
   - key: tags.role
-    prefix: ''
-    separator: ''
+    prefix: role
 compose:
   ansible_host: public_ip_address
 hostnames:
